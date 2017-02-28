@@ -1,117 +1,130 @@
 <!DOCTYPE html>
-<html >
+<html>
+
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Don't Blink</title>
-     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <title>Don't Blink</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <script src="jquery.min.js"></script>
 </head>
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+
 <body>
     <div id="modalbackground" style=" position: fixed; top:0; height:100%; width:100%; z-index:10000; display:none; background-color: #7F7F7F; opacity: 0.5;"></div>
-<h1>Don't Blink.</h1>
-<p>Do You Know Who Made This Utility? Its <font color="#e74c3c" size="+1">Lolman</font> baby!!</p><br>
+    <h1>Don't Blink.</h1>
+    <p>Do You Know Who Made This Utility? Its
+        <font color="#e74c3c" size="+1">Lolman</font> baby!!</p><br>
     <p id="info">Hitting Enter Will Get you A Next Number</p>
-    <center> <center><input type="button" id=bttt onclick="rh()" class="btn fifth" value="Continue.."></center><br><div class="container" id='container'>
-        &#183;&#183;&#183;&#183;&#183;&#183;
-    </div>
-     <div class="container" id='container-input'>
-        <input type="text" class="inputt" autofocus id="ip">
-    </div>
- <div id='times'> 0 / 10
-    </div>
+    <center>
+        <center><input type="button" id=bttt onclick="rh()" class="btn fifth" value="Continue.."></center><br>
+        <div class="container" id='container'>
+            &#183;&#183;&#183;&#183;&#183;&#183;
+        </div>
+        <div class="container" id='container-input'>
+            <input type="text" class="inputt" autofocus id="ip">
+        </div>
+        <div id='times'> 0 / 10
+        </div>
     </center><br>
 
-<div class="timer" id="tme">
- Enter to Start
-</div>
+    <div class="timer" id="tme">
+        Enter to Start
+    </div>
 </body>
-    <script>
-    function rh(){
-timer();
-        document.getElementById('bttt').setAttribute('onclick','sh()');
-        document.getElementById('bttt').setAttribute('Value','Start');
+<script>
+    function rh() {
+        timer();
+        document.getElementById('bttt').setAttribute('onclick', 'sh()');
+        document.getElementById('bttt').setAttribute('Value', 'Start');
     }
-  $(document).keypress(function(event){
-    if(event.keyCode == 13){
-     $('#bttt').click();
-      //  validate(); doesn't need to be called from here
-    }
-});
-        $("#bttt").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#bttt").offset().top
-    }, 1000);
-});
-        
-    var t=99;
-    var a=10;
-    var ta="";
-    pts="-1";
+    $(document).keypress(function(event) {
+        if (event.keyCode == 13) {
+            $('#bttt').click();
+            //  validate(); doesn't need to be called from here
+        }
+    });
+    $("#bttt").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#bttt").offset().top
+        }, 1000);
+    });
+
+    var t = 99;
+    var a = 10;
+    var ta = "";
+    pts = "-1";
     var ra;
-        function errorg(){
-            document.getElementById('container').innerHTML = "You Loose. Try Again!!";
-        }
-         function wong(){
-            document.getElementById('container').innerHTML = "You Won. Well Done!!";
-        }
-        function sh(){
-        document.getElementById('bttt').setAttribute('Value','Next');
-            var ttyy = document.getElementById('ip').value;
-            if(document.getElementById('ip').value == ta){
-                pts++;
-                document.getElementById('times').innerHTML = pts+" / 10";
-                ra = Math.floor((Math.random() * t) + a);
-                ta=ra;
-                show();
-            }else{
-                if(ta=="TimeOver"){
+
+    function errorg() {
+        document.getElementById('container').innerHTML = "You Loose. Try Again!!";
+    }
+
+    function wong() {
+        document.getElementById('container').innerHTML = "You Won. Well Done!!";
+    }
+
+    function sh() {
+        document.getElementById('bttt').setAttribute('Value', 'Next');
+        var ttyy = document.getElementById('ip').value;
+        if (document.getElementById('ip').value == ta) {
+            pts++;
+            document.getElementById('times').innerHTML = pts + " / 10";
+            ra = Math.floor((Math.random() * t) + a);
+            ta = ra;
+            show();
+        } else {
+            if (ta == "TimeOver") {
                 document.getElementById('container').innerHTML = "You Loose. Time's Over";
-                    clearInterval(myvar);
-                }else{
-                    
-    clearInterval(myvar);
-                             document.getElementById('container').innerHTML = "You Loose. It Was "+ta+"<BR><TT>You entered: "+ttyy+"</TT>";
-                document.getElementById('ip').setAttribute('style','display:none');
-                document.getElementById('bttt').setAttribute('onclick','errorg()')
-                }
-            }
-            }
+                clearInterval(myvar);
+            } else {
 
-            var myvar;
-function timer(){
-    var time = 60;
-    clearInterval(myvar);
-    document.getElementById('tme').innerHTML = time+"0s";
-    myvar = setInterval(function(){ 
-        time=time-0.1;
-        document.getElementById('tme').innerHTML = time.toFixed(1)+"0s";
-        
-        if(time.toFixed(1)==0){
-    clearInterval(myvar);
-    document.getElementById('tme').innerHTML = "00.0s";
-            ta="TimeOver";
-            sh();
+                clearInterval(myvar);
+                document.getElementById('container').innerHTML = "You Loose. It Was " + ta + "<BR><TT>You entered: " + ttyy + "</TT>";
+                document.getElementById('ip').setAttribute('style', 'display:none');
+                document.getElementById('bttt').setAttribute('onclick', 'errorg()')
+            }
         }
-    },100);
-}
+    }
+
+    var myvar;
+
+    function timer() {
+        var time = 60;
+        clearInterval(myvar);
+        document.getElementById('tme').innerHTML = time + "0s";
+        myvar = setInterval(function() {
+            time = time - 0.1;
+            document.getElementById('tme').innerHTML = time.toFixed(1) + "0s";
+
+            if (time.toFixed(1) == 0) {
+                clearInterval(myvar);
+                document.getElementById('tme').innerHTML = "00.0s";
+                ta = "TimeOver";
+                sh();
+            }
+        }, 100);
+    }
 
 
-function show(){
-    document.getElementById('ip').value = "";
-    setTimeout(function(){ hide();},500);
-    document.getElementById('container').innerHTML = ra;
-    t=t*Math.floor((Math.random() * 4) + 2)+(Math.floor((Math.random() * 10) + 1)/10);
-    a=a*Math.floor((Math.random() * 4) + 2)+(Math.floor((Math.random() * 10) + 1)/10);
-}
-function hide(){
-    document.getElementById('container').innerHTML = "&#183;&#183;&#183;&#183;&#183;&#183;";
-                    if(pts >= 10){
-                document.getElementById('container').innerHTML = "You Won. Well Done!!";
-                document.getElementById('ip').setAttribute('style','display:none');
-                document.getElementById('bttt').setAttribute('onclick','wong()');
-                }
-}
+    function show() {
+        document.getElementById('ip').value = "";
+        setTimeout(function() {
+            hide();
+        }, 500);
+        document.getElementById('container').innerHTML = ra;
+        t = t * Math.floor((Math.random() * 4) + 2) + (Math.floor((Math.random() * 10) + 1) / 10);
+        a = a * Math.floor((Math.random() * 4) + 2) + (Math.floor((Math.random() * 10) + 1) / 10);
+    }
+
+    function hide() {
+        document.getElementById('container').innerHTML = "&#183;&#183;&#183;&#183;&#183;&#183;";
+        if (pts >= 10) {
+            document.getElementById('container').innerHTML = "You Won. Well Done!!";
+            document.getElementById('ip').setAttribute('style', 'display:none');
+            document.getElementById('bttt').setAttribute('onclick', 'wong()');
+        }
+    }
 </script>
+
 </html>
