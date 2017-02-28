@@ -1,2 +1,2 @@
-# dontblink
-One Minute Game to Test Your Eyesight and Concentration.
+# Don't Blink
+A One Minute Game to Test Your Eyesight and Concentration Power.
