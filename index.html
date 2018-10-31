@@ -70,14 +70,13 @@
             pts++;
             document.getElementById('times').innerHTML = pts + " / 10";
             ra = Math.floor((Math.random() * t) + a);
-            ta = 1;
+            ta = ra;
             show();
         } else {
             if (ta == "TimeOver") {
                 document.getElementById('container').innerHTML = "You Loose. Time's Over";
                 clearInterval(myvar);
             } else {
-
                 clearInterval(myvar);
                 document.getElementById('container').innerHTML = "You Loose. It Was " + ta + "<BR><TT>You entered: " + ttyy + "</TT>";
                 document.getElementById('ip').setAttribute('style', 'display:none');
