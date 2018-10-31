@@ -49,7 +49,6 @@
             scrollTop: $("#bttt").offset().top
         }, 1000);
     });
-
     var t = 99;
     var a = 10;
     var ta = "";
@@ -71,7 +70,7 @@
             pts++;
             document.getElementById('times').innerHTML = pts + " / 10";
             ra = Math.floor((Math.random() * t) + a);
-            ta = ra;
+            ta = 1;
             show();
         } else {
             if (ta == "TimeOver") {
@@ -112,14 +111,18 @@
         setTimeout(function() {
             hide();
         }, 500);
-        document.getElementById('container').innerHTML = ra;
-        t = t * Math.floor((Math.random() * 4) + 2) + (Math.floor((Math.random() * 10) + 1) / 10);
-        a = a * Math.floor((Math.random() * 4) + 2) + (Math.floor((Math.random() * 10) + 1) / 10);
+        if(pts < 10){
+            document.getElementById('container').innerHTML = ra;
+            t = t * Math.floor((Math.random() * 4) + 2) + (Math.floor((Math.random() * 10) + 1) / 10);
+            a = a * Math.floor((Math.random() * 4) + 2) + (Math.floor((Math.random() * 10) + 1) / 10);
+        }
     }
 
     function hide() {
         document.getElementById('container').innerHTML = "&#183;&#183;&#183;&#183;&#183;&#183;";
         if (pts >= 10) {
+            
+            clearInterval(myvar);
             document.getElementById('container').innerHTML = "You Won. Well Done!!";
             document.getElementById('ip').setAttribute('style', 'display:none');
             document.getElementById('bttt').setAttribute('onclick', 'wong()');
